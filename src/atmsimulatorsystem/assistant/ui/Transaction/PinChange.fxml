@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="atmsimulatorsystem.assistant.ui.Transaction.PinChangeController">
+   <children>
+      <Label alignment="CENTER" prefHeight="95.0" prefWidth="500.0" style="-fx-background-color: black; -fx-text-fill: white;" text="PIN CHANGE">
+         <font>
+            <Font name="Arial Unicode MS" size="34.0" />
+         </font>
+      </Label>
+      <Label layoutX="103.0" layoutY="143.0" text="Enter you Old Pin :" />
+      <Label layoutX="94.0" layoutY="187.0" text="Enter your New Pin :" />
+      <Label layoutX="79.0" layoutY="234.0" text="Confirm your New Pin :" />
+      <Button fx:id="btnChange" layoutX="147.0" layoutY="285.0" mnemonicParsing="false" onAction="#changeButtonAction" prefHeight="45.0" prefWidth="100.0" text="CHANGE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btnExit" layoutX="269.0" layoutY="285.0" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="45.0" prefWidth="100.0" text="BACK">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Label layoutX="260.0" layoutY="100.0" text="A/C :">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblAccountNumber" layoutX="307.0" layoutY="100.0" prefHeight="20.0" prefWidth="175.0">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXPasswordField fx:id="txtNewPin" layoutX="214.0" layoutY="178.0" />
+      <JFXPasswordField fx:id="txtConfirmNewPin" layoutX="214.0" layoutY="223.0" />
+      <JFXPasswordField fx:id="txtOldPin" layoutX="214.0" layoutY="136.0" promptText="PIN NUMBER">
+         <effect>
+            <Glow />
+         </effect>
+      </JFXPasswordField>
+   </children>
+</AnchorPane>

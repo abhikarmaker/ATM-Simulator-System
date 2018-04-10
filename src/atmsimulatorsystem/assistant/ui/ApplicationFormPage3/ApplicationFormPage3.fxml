@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="560.0" prefWidth="500.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="atmsimulatorsystem.assistant.ui.ApplicationFormPage3.ApplicationFormPage3Controller">
+      <children>
+    <AnchorPane layoutX="0.0" layoutY="1.0" prefHeight="400.0" prefWidth="500.0">
+      <children>
+        <VBox layoutX="0.0" layoutY="0.0" prefHeight="501.0" prefWidth="500.0">
+          <children>
+            <AnchorPane minHeight="322.0" prefHeight="322.0" prefWidth="500.0">
+              <children>
+                <Label layoutX="79.0" layoutY="26.0" text="Card Number:" />
+                <Label fx:id="lblCardNumber" layoutX="278.0" layoutY="26.0" text="XXXX-XXXX-XXXX-" />
+                <Label layoutX="79.0" layoutY="42.0" text="(Your 16-digit Card Number)" />
+                <Label layoutX="278.0" layoutY="42.0" text="(It would appear in ATM Card)" />
+                <Label layoutX="79.0" layoutY="81.0" text="PIN :" />
+                <Label layoutX="78.0" layoutY="97.0" text="(6-digits password)" />
+                <Label id="lblPinCode" fx:id="lblPinNumber" layoutX="278.0" layoutY="81.0" text="XXXX" />
+                <Label layoutX="79.0" layoutY="141.0" text="Services Required :" />
+                <CheckBox id="chkBoxAtmCard" fx:id="checkBoxAtmCard" layoutX="78.0" layoutY="175.0" mnemonicParsing="false" onAction="#atmCardCheckBox" text="ATM CARD" />
+                <CheckBox id="chkBoxIntBank" fx:id="checkBoxInternetBanking" layoutX="278.0" layoutY="173.0" mnemonicParsing="false" onAction="#internetBankingCheckBox" text="Internet Banking" />
+                <CheckBox id="chkBoxMobBank" fx:id="checkBoxMobileBanking" layoutX="79.0" layoutY="216.0" mnemonicParsing="false" onAction="#mobileBankingCheckBox" text="Mobile Banking" />
+                <CheckBox id="chkBoxEmailAlert" fx:id="checkBoxEmailAlerts" layoutX="278.0" layoutY="216.0" mnemonicParsing="false" onAction="#emaikAlertsCheckBox" text="Email Alerts" />
+                <CheckBox id="chkBoxChequeBook" fx:id="checkBoxAChequeBook" layoutX="78.0" layoutY="260.0" mnemonicParsing="false" onAction="#checkBookCheckBox" text="Cheque Book" />
+                <CheckBox id="chkBoxEStatement" fx:id="checkBoxEStatement" layoutX="278.0" layoutY="260.0" mnemonicParsing="false" onAction="#eStatementCheckBox" text="E-Statement" />
+                <CheckBox id="chkBoxDeclaration" fx:id="checkBoxDeclaration" layoutX="120.0" layoutY="327.0" mnemonicParsing="false" text="I hereby declare that the above entered details" />
+                <Label layoutX="140.0" layoutY="343.0" text="are correct to the best of my knowledge." />
+                        <Label fx:id="lbl10" layoutX="16.0" layoutY="262.0" text="Label" visible="false" />
+                        <Label fx:id="lbl11" layoutX="26.0" layoutY="272.0" text="Label" visible="false" />
+                        <Label fx:id="lbl12" layoutX="20.0" layoutY="141.0" text="Label" visible="false" />
+                        <Label fx:id="lbl13" layoutX="20.0" layoutY="192.0" text="Label" visible="false" />
+                        <Label fx:id="lbl14" layoutX="14.0" layoutY="251.0" text="Label" visible="false" />
+                        <Label fx:id="lbl15" layoutX="15.0" layoutY="245.0" text="Label" visible="false" />
+                        <Label fx:id="lbl16" layoutX="20.0" layoutY="223.0" text="Label" visible="false" />
+                        <Label fx:id="lbl17" layoutX="15.0" layoutY="171.0" text="Label" visible="false" />
+                        <Label fx:id="lbl18" layoutX="17.0" layoutY="97.0" text="Label" visible="false" />
+                        <Label id="lblPinCode" fx:id="lblLastFourDigit" layoutX="379.0" layoutY="26.0" />
+              </children>
+              <padding>
+                <Insets top="200.0" />
+              </padding>
+            </AnchorPane>
+                  <Label fx:id="lbl1" disable="true" text="Label" visible="false" />
+                  <Label fx:id="lbl21" text="Label" visible="false" />
+                  <Label fx:id="lbl9" text="Label" visible="false" />
+                  <Label fx:id="lbl8" text="Label" visible="false" />
+                  <Label fx:id="lbl7" text="Label" visible="false" />
+                  <Label fx:id="lbl6" text="Label" visible="false" />
+                  <Label fx:id="lbl5" text="Label" visible="false" />
+                  <Label fx:id="lbl4" text="Label" visible="false" />
+                  <Label fx:id="lbl3" text="Label" visible="false" />
+                  <Label fx:id="lbl2" text="Label" visible="false" />
+          </children>
+          <padding>
+            <Insets top="80.0" />
+          </padding>
+        </VBox>
+        <Label alignment="CENTER" layoutX="70.0" layoutY="14.0" text="APPLICATION FORM">
+          <font>
+            <Font name="Arial Bold" size="36.0" />
+          </font>
+        </Label>
+        <Label layoutX="157.0" layoutY="56.0" text="Page 3: Account Details">
+          <font>
+            <Font name="Arial Bold" size="16.0" />
+          </font>
+        </Label>
+            <Label fx:id="lbl19" layoutX="9.0" layoutY="368.0" text="Label" visible="false" />
+            <Label fx:id="lbl20" layoutX="19.0" layoutY="378.0" text="Label" visible="false" />
+      </children>
+    </AnchorPane>
+    <HBox layoutX="0.0" layoutY="488.0" prefHeight="73.0" prefWidth="500.0">
+      <children>
+        <Button id="btnSave" mnemonicParsing="false" onAction="#saveButtonAction" prefHeight="38.0" prefWidth="100.0" text="SAVE" textAlignment="LEFT">
+          <HBox.margin>
+            <Insets left="110.0" right="30.0" top="10.0" />
+          </HBox.margin>
+        </Button>
+        <Button fx:id="btnBack" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="38.0" prefWidth="100.0" text="BACK" textAlignment="LEFT">
+          <HBox.margin>
+            <Insets left="50.0" right="30.0" top="10.0" />
+          </HBox.margin>
+        </Button>
+      </children>
+    </HBox>
+      <Label fx:id="lblDOB" layoutX="283.0" layoutY="396.0" text="Label" visible="false" />
+  </children>
+  <stylesheets>
+    <URL value="@applicationformpage3.css" />
+  </stylesheets>
+</AnchorPane>

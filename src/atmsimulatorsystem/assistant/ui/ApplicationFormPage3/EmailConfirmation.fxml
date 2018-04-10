@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="atmsimulatorsystem.assistant.ui.ApplicationFormPage3.EmailConfirmationController">
+   <children>
+      <Label layoutX="36.0" layoutY="41.0" text="Congrats you have successfully Registered">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Button fx:id="btnSend" layoutX="38.0" layoutY="120.0" mnemonicParsing="false" onAction="#sendButtonAction" prefHeight="38.0" prefWidth="100.0" text="SEND" />
+      <Label layoutX="37.0" layoutY="58.0" text="Your Card Number and Pin will be send in ">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="lblData" layoutX="100.0" layoutY="155.0" text="Label" visible="false" />
+      <Label layoutX="98.0" layoutY="75.0" text="your Email Address.">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="119.0" layoutY="164.0" text="Please Login!!!" />
+      <Button fx:id="btnLogin" layoutX="160.0" layoutY="120.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="38.0" prefWidth="100.0" text="LOGIN" />
+      <Label fx:id="lblAcc" alignment="CENTER" layoutX="33.0" layoutY="14.0" prefHeight="17.0" prefWidth="239.0" text="Label" visible="false" />
+   </children>
+</AnchorPane>

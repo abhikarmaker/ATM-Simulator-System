@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="350.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="atmsimulatorsystem.assistant.ui.Transaction.DepositController">
+   <children>
+      <Label fx:id="lblAccountNumber" layoutX="307.0" layoutY="100.0" prefHeight="20.0" prefWidth="175.0">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="260.0" layoutY="100.0" text="A/C :">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnExit" layoutX="269.0" layoutY="285.0" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="45.0" prefWidth="100.0" text="BACK" />
+      <Label alignment="CENTER" prefHeight="95.0" prefWidth="500.0" style="-fx-background-color: black; -fx-text-fill: white;" text="DEPOSIT">
+         <font>
+            <Font name="Arial Unicode MS" size="34.0" />
+         </font>
+      </Label>
+      <Label layoutX="81.0" layoutY="175.0" text="Enter Your Amount To Deposit :" />
+      <TextField fx:id="txtDepositAmount" layoutX="260.0" layoutY="171.0" />
+      <Button fx:id="btnDeposit" layoutX="120.0" layoutY="285.0" mnemonicParsing="false" onAction="#depositButtonAction" prefHeight="45.0" prefWidth="100.0" text="DEPOSIT" />
+   </children>
+</AnchorPane>

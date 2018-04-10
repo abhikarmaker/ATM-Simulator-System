@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Fri Mar 09 00:42:25 EST 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-0162-0948-24be-000005ee33f8 
+on database directory G:\Work\Semester 2\Java\Part1\Java FXML Project\ATM Simulator System\database\atmsimulatorsystem with class loader sun.misc.Launcher$AppClassLoader@55f96302 
+Loaded from file:/G:/Work/Semester%202/Java/Part1/Java%20FXML%20Project/ATM%20Simulator%20System/dist/run1372410973/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_144-b01
+user.dir=G:\Work\Semester 2\Java\Part1\Java FXML Project\ATM Simulator System
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

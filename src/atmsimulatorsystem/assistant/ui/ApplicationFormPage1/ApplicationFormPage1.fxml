@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="600.0" prefWidth="500.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="atmsimulatorsystem.assistant.ui.ApplicationFormPage1.ApplicationFormPage1Controller">
+  <children>
+    <AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="527.0" prefWidth="500.0">
+      <children>
+        <VBox layoutX="0.0" layoutY="0.0" prefHeight="501.0" prefWidth="500.0" />
+        <Label alignment="CENTER" layoutX="70.0" layoutY="14.0" text="APPLICATION FORM">
+          <font>
+            <Font name="Arial Bold" size="36.0" />
+          </font>
+        </Label>
+        <Label layoutX="157.0" layoutY="56.0" text="Page 1: Personal Details">
+          <font>
+            <Font name="Arial Bold" size="16.0" />
+          </font>
+        </Label>
+      </children>
+    </AnchorPane>
+    <HBox layoutY="519.0" prefHeight="73.0" prefWidth="500.0">
+      <children>
+        <Button fx:id="btnSave" mnemonicParsing="false" onAction="#saveButtonAction" prefHeight="38.0" prefWidth="100.0" text="SAVE" textAlignment="LEFT">
+          <HBox.margin>
+            <Insets left="110.0" right="30.0" top="10.0" />
+          </HBox.margin>
+        </Button>
+        <Button fx:id="btnBack" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="38.0" prefWidth="100.0" text="BACK" textAlignment="LEFT">
+          <HBox.margin>
+            <Insets left="50.0" right="30.0" top="10.0" />
+          </HBox.margin>
+        </Button>
+      </children>
+    </HBox>
+    <AnchorPane layoutX="0.0" layoutY="74.0" minHeight="412.0" prefHeight="412.0" prefWidth="500.0">
+      <children>
+        <TextField fx:id="txtFirstName" alignment="CENTER_LEFT" layoutX="92.0" layoutY="14.0" prefHeight="28.0" prefWidth="324.0" promptText="First Name" />
+        <TextField fx:id="txtMiddleName" alignment="CENTER_LEFT" layoutX="92.0" layoutY="51.0" prefHeight="28.0" prefWidth="324.0" promptText="Middle Name" />
+        <TextField fx:id="txtLastName" alignment="CENTER_LEFT" layoutX="92.0" layoutY="87.0" prefHeight="28.0" prefWidth="324.0" promptText="Last Name" />
+        <TextField fx:id="txtFatherName" layoutX="92.0" layoutY="124.0" prefHeight="28.0" prefWidth="324.0" promptText="Father's Name" />
+        <Label layoutX="94.0" layoutY="203.0" text="Gender :">
+          <font>
+            <Font name="Arial" size="12.0" fx:id="x1" />
+          </font>
+        </Label>
+        <RadioButton id="radioGender" fx:id="radioGenderMale" layoutX="181.0" layoutY="201.0" mnemonicParsing="false" onAction="#maleRadioButton" text="Male" />
+        <RadioButton id="radioGender" fx:id="radioGenderFemale" layoutX="264.0" layoutY="201.0" mnemonicParsing="false" onAction="#femaleRadioButton" text="Female" />
+        <TextField fx:id="txtEmailAddress" layoutX="92.0" layoutY="226.0" prefHeight="28.0" prefWidth="324.0" promptText="Email Address" />
+        <Label font="$x1" layoutX="92.0" layoutY="266.0" text="Marital Status :" />
+        <ComboBox fx:id="comboMarital" layoutX="204.0" layoutY="263.0">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Single" />
+              <String fx:value="Married" />
+              <String fx:value="UnMarried" />
+              <String fx:value="Others" />
+            </FXCollections>
+          </items>
+        </ComboBox>
+        <TextField fx:id="txtAddress" layoutX="92.0" layoutY="294.0" prefHeight="28.0" prefWidth="324.0" promptText="Address" />
+        <TextField fx:id="txtCity" layoutX="92.0" layoutY="334.0" prefHeight="28.0" prefWidth="324.0" promptText="City" />
+        <TextField fx:id="txtPinCode" layoutX="92.0" layoutY="375.0" prefHeight="28.0" prefWidth="324.0" promptText="Pin Code" />
+        <TextField fx:id="txtState" layoutX="92.0" layoutY="415.0" prefHeight="28.0" prefWidth="324.0" promptText="State" />
+            <DatePicker fx:id="dateDOB" layoutX="180.0" layoutY="166.0" prefHeight="25.0" prefWidth="235.0" />
+            <Label layoutX="94.0" layoutY="170.0" text="Date of Birth :" />
+      </children>
+      <padding>
+        <Insets top="200.0" />
+      </padding>
+    </AnchorPane>
+  </children>
+  <stylesheets>
+    <URL value="@applicationformpage1.css" />
+  </stylesheets>
+</AnchorPane>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="560.0" prefWidth="500.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="atmsimulatorsystem.assistant.ui.Transaction.TransactionController">
+   <children>
+      <AnchorPane layoutX="150.0" layoutY="143.0" prefHeight="560.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" layoutX="116.0" layoutY="15.0" text="TRANSACTION">
+               <font>
+                  <Font name="Arial Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="33.0" layoutY="89.0" prefHeight="67.0" prefWidth="444.0" text="Please Select Your Transaction">
+               <font>
+                  <Font name="Arial Bold" size="27.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnDeposit" layoutX="54.0" layoutY="185.0" mnemonicParsing="false" onAction="#depositButtonAction" prefHeight="50.0" prefWidth="150.0" text="DEPOSIT" />
+            <Button fx:id="btnCashWithdrawal" layoutX="281.0" layoutY="185.0" mnemonicParsing="false" onAction="#cashWithdrawalButtonAction" prefHeight="50.0" prefWidth="150.0" text="CASH WITHDRAWAL" />
+            <Button fx:id="btnFastCash" layoutX="54.0" layoutY="280.0" mnemonicParsing="false" onAction="#fastCashButtonAction" prefHeight="50.0" prefWidth="150.0" text="FAST CASH" />
+            <Button fx:id="btnMiniStatement" layoutX="281.0" layoutY="280.0" mnemonicParsing="false" onAction="#miniStatementButttonAction" prefHeight="50.0" prefWidth="150.0" text="MINI STATEMENT" />
+            <Button fx:id="btnPinChange" layoutX="54.0" layoutY="374.0" mnemonicParsing="false" onAction="#pinChangeButtonAction" prefHeight="50.0" prefWidth="150.0" text="PIN CHANGE" />
+            <Button fx:id="btnBalanceEnquiry" layoutX="281.0" layoutY="374.0" mnemonicParsing="false" onAction="#balanceEnquiryButtonAction" prefHeight="50.0" prefWidth="150.0" text="BALANCE ENQUIRY" />
+            <Button fx:id="btnExit" layoutX="172.0" layoutY="468.0" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="50.0" prefWidth="150.0" text="EXIT" />
+            <Label fx:id="lblAccountNumber" layoutX="281.0" layoutY="156.0" prefHeight="20.0" prefWidth="175.0">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font></Label>
+            <Label layoutX="234.0" layoutY="156.0" text="A/C :">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="76.0" text="Welcome,">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblName" layoutX="171.0" layoutY="76.0" prefHeight="20.0" prefWidth="306.0">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

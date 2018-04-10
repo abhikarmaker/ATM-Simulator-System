@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="560.0" prefWidth="500.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="atmsimulatorsystem.assistant.ui.WelcomePage.WelcomePageController">
+    <stylesheets>
+        <URL value="@welcomepage.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane layoutY="84.0" prefHeight="476.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="84.0">
+         <children>
+            <Button fx:id="btnTransactions" layoutX="171.0" layoutY="182.0" mnemonicParsing="false" onAction="#transactionsButtonAction" prefHeight="50.0" prefWidth="150.0" text="TRANSACTIONS" />
+         </children></AnchorPane>
+      <HBox prefHeight="86.0" prefWidth="500.0">
+         <children>
+            <Button fx:id="btnLogout" alignment="CENTER" mnemonicParsing="false" onAction="#logoutButtonAction" text="Logout">
+               <HBox.margin>
+                  <Insets left="400.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <Label alignment="CENTER" layoutX="80.0" layoutY="24.0" text="Welcome To ATM">
+         <font>
+            <Font name="Arial Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="30.0" layoutY="99.0" prefHeight="67.0" prefWidth="444.0" text="Proceed for your Transaction">
+         <font>
+            <Font name="Arial Bold" size="27.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
