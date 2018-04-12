@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package atmsimulatorsystem.assistant.ui.Transaction;
 
 import atmsimulatorsystem.assistant.Database.DatabaseHandler;
+import atmsimulatorsystem.assistant.ui.ThankYouPage.ThankYouPageController;
 import atmsimulatorsystem.assistant.ui.model.UserAccount;
 import atmsimulatorsystem.assistant.ui.model.UserAccountDAO;
 import atmsimulatorsystem.assistant.ui.model.UserTransactions;
@@ -32,6 +28,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -41,9 +38,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
  *
- * @author USER
+ * @author ABHIJEET KARMAKER <C0720286>, NARESH GUNIMANIKULA <C0719672>,
+ * PRIYANKA MODI <C0717925>
  */
 public class MiniStatementController implements Initializable {
 
@@ -100,6 +97,7 @@ public class MiniStatementController implements Initializable {
             Parent root = loader.load();
             stage.setScene(new Scene(root));
             stage.show();
+            stage.setTitle("Transactions");
             String accountNumber = lblAccountNumber.getText();
             user.setAccountNumber(accountNumber);
             UserAccount user = UserAccountDAO.searchUserWithAccountNumber(lblAccountNumber.getText());
@@ -132,24 +130,32 @@ public class MiniStatementController implements Initializable {
         try {
             //Get ResultSet from dbExecuteQuery method
             ResultSet rsUser = DatabaseHandler.dbExecuteQuery(selectStmt);
-            //Send ResultSet to the getEmployeeFromResultSet method and get employee object
+            //Send ResultSet to the getUserFromResultSet method and get user object
             UserTransactions user = new UserTransactions();
-            while (rsUser.next()) {
-                Date colDate = rsUser.getDate("date");
-                double colDeposit = rsUser.getDouble("deposit");
-                double colWithdrawl = rsUser.getDouble("withdrawl");
-                double colBalance = rsUser.getDouble("balance");
-                list.add(new UserTransactions(colBalance, colDeposit, colWithdrawl, colDate));
-                System.out.println(colBalance + " " + colDeposit + " " + colWithdrawl + " " + colDate);
+            if (rsUser.isBeforeFirst()) {
+                while (rsUser.next()) {
+                    Date colDate = rsUser.getDate("date");
+                    double colDeposit = rsUser.getDouble("deposit");
+                    double colWithdrawl = rsUser.getDouble("withdrawl");
+                    double colBalance = rsUser.getDouble("balance");
+                    list.add(new UserTransactions(colBalance, colDeposit, colWithdrawl, colDate));
+                    System.out.println(colBalance + " " + colDeposit + " " + colWithdrawl + " " + colDate);
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setHeaderText(null);
+                alert.setContentText("No Transactions has been made yet");
+                alert.showAndWait();
             }
-
-            //Return employee object
+            //Return user object
         } catch (SQLException e) {
             System.out.println(e);
             //Return exception
             throw e;
         }
-        tableView.getItems().setAll(list);
+
+        tableView.getItems()
+                .setAll(list);
     }
 
     private void statement() {
@@ -173,7 +179,14 @@ public class MiniStatementController implements Initializable {
             ResultSet rs = DatabaseHandler.dbExecuteQuery(selectStmt);
             //Send ResultSet to the getEmployeeFromResultSet method and get employee object
             UserTransactions user = new UserTransactions();
-            PdfWriter.getInstance(document, new FileOutputStream(new File("Statement_(" + lblAccountNumber.getText() + ")_" + counter + ".pdf")));
+            PdfWriter.getInstance(document, new FileOutputStream(new File("Statement_("
+                    + lblAccountNumber.getText() + ")_" + counter + ".pdf")));
+//            if (!rs.next()) {
+//                Alert alert = new Alert(Alert.AlertType.WARNING);
+//                alert.setHeaderText(null);
+//                alert.setContentText("No Transactions has been made yet");
+//                alert.showAndWait();
+//            } else {
             if (rs.next()) {
                 String fname = rs.getString("first_name");
 
@@ -187,7 +200,7 @@ public class MiniStatementController implements Initializable {
                         + "\nDeposit Amount                 "
                         + "Withdrawl Amount               "
                         + "Available Balance                   "
-                        + "Date\n"
+                        + "Date\n\n"
                 );
 
                 document.open();
@@ -207,6 +220,12 @@ public class MiniStatementController implements Initializable {
                         + date);
                 document.add(para1);
             }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("Your Statement has been mailed to you.");
+            alert.showAndWait();
+            thankYouPageLoader();
+
         } catch (DocumentException | FileNotFoundException | SQLException | ClassNotFoundException e) {
             System.out.println(e);
         }
@@ -216,5 +235,24 @@ public class MiniStatementController implements Initializable {
     @FXML
     private void statementButtonAction(ActionEvent event) {
         statement();
+    }
+
+    private void thankYouPageLoader() {
+        UserAccount user = new UserAccount();
+        try {
+            Stage stage = (Stage) root.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/atmsimulatorsystem"
+                    + "/assistant/ui/ThankYouPage/ThankYouPage.fxml"));
+            Parent root = loader.load();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Thank You");
+            stage.show();
+            String accountNumber = lblAccountNumber.getText();
+            user.setAccountNumber(accountNumber);
+            ThankYouPageController controller = loader.<ThankYouPageController>getController();
+            controller.setText(user);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 }

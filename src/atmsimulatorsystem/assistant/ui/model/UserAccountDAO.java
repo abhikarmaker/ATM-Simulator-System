@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package atmsimulatorsystem.assistant.ui.model;
 
 import atmsimulatorsystem.assistant.Database.DatabaseHandler;
@@ -14,10 +9,16 @@ import javafx.collections.ObservableList;
 
 /**
  *
- * @author Team Creators!!!
+ * @author ABHIJEET KARMAKER <C0720286>, NARESH GUNIMANIKULA <C0719672>,
+ * PRIYANKA MODI <C0717925>
  */
 public class UserAccountDAO {
 
+    /**
+     *
+     * @return @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public static ObservableList<UserAccount> searchUser() throws SQLException, ClassNotFoundException {
         String selectStmt = "SELECT * FROM USERACCOUNTS";
 
@@ -31,8 +32,15 @@ public class UserAccountDAO {
         }
     }
 
+    /**
+     *
+     * @param rs
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     private static ObservableList<UserAccount> getUserList(ResultSet rs) throws SQLException, ClassNotFoundException {
-        //Declare a observable List which comprises of User objects
+        //Declare a observable List which comprises of Users objects
         ObservableList<UserAccount> userList = FXCollections.observableArrayList();
 
         while (rs.next()) {
@@ -49,18 +57,47 @@ public class UserAccountDAO {
             user.setCity(rs.getString("city"));
             user.setPin_code(rs.getString("pin_code"));
             user.setState(rs.getString("state"));
-            
+
             user.setRandomNumber(rs.getString("randomNumber"));
             user.setPinNumber(rs.getString("pinNumber"));
-            
+
             user.setAccountNumber(rs.getString("account_number"));
-            //Add employee to the ObservableList
+            //Add user to the ObservableList
             userList.add(user);
         }
-        //return empList (ObservableList of Employees)
+        //return userList (ObservableList of Users)
         return userList;
     }
 
+    /**
+     *
+     * @param fname
+     * @param mname
+     * @param lname
+     * @param faname
+     * @param dob
+     * @param gender
+     * @param email
+     * @param marital
+     * @param address
+     * @param city
+     * @param pincode
+     * @param state
+     * @param religion
+     * @param income
+     * @param education
+     * @param occupation
+     * @param sinNumber
+     * @param status
+     * @param existingAcc
+     * @param accountType
+     * @param randomNumber
+     * @param pinNumber
+     * @param accountNumber
+     * @param service_request
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public static void insertUser(String fname, String mname, String lname,
             String faname, LocalDate dob, String gender, String email, String marital,
             String address, String city, String pincode, String state,
@@ -68,7 +105,7 @@ public class UserAccountDAO {
             String sinNumber, String status, String existingAcc,
             String accountType, String randomNumber,
             String pinNumber, String accountNumber, String service_request) throws SQLException, ClassNotFoundException {
-        
+
         //Execute INSERT operation
         String updateStmt = "INSERT INTO USERACCOUNTS(first_name,middle_name,last_name,"
                 + "father_name, dateofBirth, gender,email_address,marital_status,address,"
@@ -109,6 +146,13 @@ public class UserAccountDAO {
         }
     }
 
+    /**
+     *
+     * @param cardNumber
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     //Login Form Calling
     public static UserAccount searchUser(String cardNumber) throws SQLException, ClassNotFoundException {
         //Declare a SELECT statement
@@ -119,20 +163,27 @@ public class UserAccountDAO {
             //Get ResultSet from dbExecuteQuery method
             ResultSet rsUser = DatabaseHandler.dbExecuteQuery(selectStmt);
 
-            //Send ResultSet to the getEmployeeFromResultSet method and get employee object
+            //Send ResultSet to the getEmployeeFromResultSet method and get user object
             UserAccount user = getUserFromResultSet(rsUser);
 
             //Return employee object
             return user;
         } catch (SQLException e) {
-            System.out.println("While searching an employee with " + cardNumber + 
-                    " card number, an error occurred: " + e);
+            System.out.println("While searching an employee with " + cardNumber
+                    + " card number, an error occurred: " + e);
             //Return exception
             throw e;
         }
     }
-    
-    //Email Form Calling
+
+    /**
+     * 
+     * @param accountNumber
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
+    //Email Access Form Calling
     public static UserAccount searchUserWithAccountNumber(String accountNumber) throws SQLException, ClassNotFoundException {
         //Declare a SELECT statement
         String selectStmt = "SELECT * FROM USERACCOUNTS WHERE account_number=" + accountNumber;
@@ -142,19 +193,25 @@ public class UserAccountDAO {
             //Get ResultSet from dbExecuteQuery method
             ResultSet rsUser = DatabaseHandler.dbExecuteQuery(selectStmt);
 
-            //Send ResultSet to the getEmployeeFromResultSet method and get employee object
+            //Send ResultSet to the getEmployeeFromResultSet method and get user object
             UserAccount user = getUserFromResultSet(rsUser);
 
-            //Return employee object
+            //Return user object
             return user;
         } catch (SQLException e) {
-            System.out.println("While searching an employee with " + accountNumber + 
-                    " account number, an error occurred: " + e);
+            System.out.println("While searching an user with " + accountNumber
+                    + " account number, an error occurred: " + e);
             //Return exception
             throw e;
         }
     }
-         
+
+    /**
+     * 
+     * @param rs
+     * @return
+     * @throws SQLException 
+     */
     public static UserAccount getUserFromResultSet(ResultSet rs) throws SQLException {
         UserAccount user = new UserAccount();
         if (rs.next()) {
@@ -168,17 +225,24 @@ public class UserAccountDAO {
         }
         return user;
     }
-    
+
+    /**
+     * 
+     * @param accountNumber
+     * @param pinNumber
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
     //*************************************
     //UPDATE an User's Pin Number
     //*************************************
-    public static void updateUserPin (String accountNumber, String pinNumber) throws SQLException, ClassNotFoundException {
+    public static void updateUserPin(String accountNumber, String pinNumber) throws SQLException, ClassNotFoundException {
         //Declare a UPDATE statement
-        String updateStmt =
-                        "   UPDATE USERACCOUNTS\n" +
-                        "      SET pinNumber = '" + pinNumber + "'\n" +
-                        "    WHERE account_number = " + accountNumber + ";";
- 
+        String updateStmt
+                = "   UPDATE USERACCOUNTS\n"
+                + "      SET pinNumber = '" + pinNumber + "'\n"
+                + "    WHERE account_number = " + accountNumber + ";";
+
         //Execute UPDATE operation
         try {
             DatabaseHandler.dbExecuteUpdate(updateStmt);

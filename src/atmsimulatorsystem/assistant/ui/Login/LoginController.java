@@ -4,6 +4,7 @@ import atmsimulatorsystem.assistant.Database.DatabaseHandler;
 import atmsimulatorsystem.assistant.ui.Transaction.TransactionController;
 import atmsimulatorsystem.assistant.ui.model.UserAccount;
 import atmsimulatorsystem.assistant.ui.model.UserAccountDAO;
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -24,11 +25,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ *
+ * @author ABHIJEET KARMAKER <C0720286>, NARESH GUNIMANIKULA <C0719672>,
+ * PRIYANKA MODI <C0717925>
+ */
 public class LoginController implements Initializable {
 
     PreparedStatement pst;
@@ -40,9 +47,11 @@ public class LoginController implements Initializable {
     @FXML
     private Label btnExit;
     @FXML
-    private Button btnRegister;
-    @FXML
     private AnchorPane root;
+    @FXML
+    private JFXButton btnSignIn;
+    @FXML
+    private JFXButton btnRegister;
 
     /**
      * Initializes the controller class.
@@ -93,9 +102,7 @@ public class LoginController implements Initializable {
                         alert.setHeaderText(null);
                         alert.setContentText("Success.\n Welcome To ATM Simulator System.");
                         alert.showAndWait();
-
                         user.setAccountNumber(accountNumber);
-                        
                         Stage stage = (Stage) root.getScene().getWindow();
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/atmsimulatorsystem/assistant/ui/Transaction/Transaction.fxml"));
                         Parent root = loader.load();
@@ -121,16 +128,6 @@ public class LoginController implements Initializable {
         }
     }
 
-//    private void exitButtonAction(ActionEvent event) {
-//        
-//    }
-
-    @FXML
-    private void registerButtonAction(ActionEvent event) {
-        loadWindow("/atmsimulatorsystem/assistant/ui/ApplicationFormPage1"
-                + "/ApplicationFormPage1.fxml", "Personal Details 1");
-    }
-
     void loadWindow(String location, String title) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(location));
@@ -149,5 +146,11 @@ public class LoginController implements Initializable {
         Stage stage = (Stage) btnExit.getScene().getWindow();
         stage.close();
         System.exit(0);
+    }
+
+    @FXML
+    private void registerButtonAction(ActionEvent event) {
+        loadWindow("/atmsimulatorsystem/assistant/ui/ApplicationFormPage1"
+                + "/ApplicationFormPage1.fxml", "Application Form Page 1");
     }
 }

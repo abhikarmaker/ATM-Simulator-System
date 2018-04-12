@@ -26,9 +26,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
  *
- * @author USER
+ * @author ABHIJEET KARMAKER <C0720286>, NARESH GUNIMANIKULA <C0719672>,
+ * PRIYANKA MODI <C0717925>
  */
 public class TransactionController implements Initializable {
 
@@ -50,11 +50,12 @@ public class TransactionController implements Initializable {
     private Label lblAccountNumber;
     @FXML
     private Label lblName;
-    
+
     UserAccount user = new UserAccount();
     UserTransactions userTran = new UserTransactions();
     @FXML
     private AnchorPane root;
+
     /**
      * Initializes the controller class.
      */
@@ -73,6 +74,7 @@ public class TransactionController implements Initializable {
                     + "/assistant/ui/Transaction/Deposit.fxml"));
             Parent root = loader.load();
             stage.setScene(new Scene(root));
+            stage.setTitle("Deposit");
             stage.show();
             DepositController controller = loader.<DepositController>getController();
             controller.setText(user);
@@ -91,6 +93,7 @@ public class TransactionController implements Initializable {
                     + "/assistant/ui/Transaction/Withdrawl.fxml"));
             Parent root = loader.load();
             stage.setScene(new Scene(root));
+            stage.setTitle("Withdrawl");
             stage.show();
             WithdrawlController controller = loader.<WithdrawlController>getController();
             controller.setText(user);
@@ -109,6 +112,7 @@ public class TransactionController implements Initializable {
                     + "/assistant/ui/Transaction/FastCash.fxml"));
             Parent root = loader.load();
             stage.setScene(new Scene(root));
+            stage.setTitle("Fast Cash");
             stage.show();
             FastCashController controller = loader.<FastCashController>getController();
             controller.setText(user);
@@ -127,6 +131,7 @@ public class TransactionController implements Initializable {
                     + "/assistant/ui/Transaction/MiniStatement.fxml"));
             Parent root = loader.load();
             stage.setScene(new Scene(root));
+            stage.setTitle("Mini Statement");
             stage.show();
             MiniStatementController controller = loader.<MiniStatementController>getController();
             controller.setText(userTran);
@@ -145,6 +150,7 @@ public class TransactionController implements Initializable {
                     + "/assistant/ui/Transaction/PinChange.fxml"));
             Parent root = loader.load();
             stage.setScene(new Scene(root));
+            stage.setTitle("Pin Change");
             stage.show();
             PinChangeController controller = loader.<PinChangeController>getController();
             controller.setText(user);
@@ -161,15 +167,16 @@ public class TransactionController implements Initializable {
             //Setting values from Transactions table to balance Enquiry
             UserTransactions userTran = UserTransactionsDAO.searchUserForTransactionDetails(lblAccountNumber.getText());
             ObservableList<UserTransactions> userData = FXCollections.observableArrayList();
-                userData.add(userTran);
-                userTran.setBalance(userTran.getBalance());
-                userTran.setFirst_name(userTran.getFirst_name());
-                
+            userData.add(userTran);
+            userTran.setBalance(userTran.getBalance());
+            userTran.setFirst_name(userTran.getFirst_name());
+
             Stage stage = (Stage) root.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/atmsimulatorsystem/"
                     + "assistant/ui/Transaction/BalanceEnquiry.fxml"));
             Parent root = loader.load();
             stage.setScene(new Scene(root));
+            stage.setTitle("Balance Enquiry");
             stage.show();
             BalanceEnquiryController controller = loader.<BalanceEnquiryController>getController();
             controller.setText(userTran);

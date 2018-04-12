@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package atmsimulatorsystem.assistant.ui.ThankYouPage;
 
 import atmsimulatorsystem.assistant.ui.Transaction.TransactionController;
@@ -26,9 +21,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
- *
- * @author USER
+ * 
+ * @author ABHIJEET KARMAKER <C0720286>, NARESH GUNIMANIKULA <C0719672>, PRIYANKA MODI <C0717925>
  */
 public class ThankYouPageController implements Initializable {
 
@@ -59,6 +53,7 @@ public class ThankYouPageController implements Initializable {
                     + "/atmsimulatorsystem/assistant/ui/Transaction/Transaction.fxml"));
             Parent root = loader.load();
             stage.setScene(new Scene(root));
+            stage.setTitle("Transactions");
             stage.show();
             String accountNumber = lblAccountNumber.getText();
             user.setAccountNumber(accountNumber);

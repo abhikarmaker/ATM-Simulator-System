@@ -25,8 +25,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ *
+ * @author ABHIJEET KARMAKER <C0720286>, NARESH GUNIMANIKULA <C0719672>,
+ * PRIYANKA MODI <C0717925>
+ */
 public class ApplicationFormPage3Controller implements Initializable {
-
+    
     @FXML
     private Label lblCardNumber;
     @FXML
@@ -34,27 +39,27 @@ public class ApplicationFormPage3Controller implements Initializable {
     @FXML
     private CheckBox checkBoxAtmCard, checkBoxInternetBanking, checkBoxMobileBanking,
             checkBoxEmailAlerts, checkBoxAChequeBook, checkBoxEStatement, checkBoxDeclaration;
+    
     ObservableList<String> checkBoxList = FXCollections.observableArrayList();
-
+    
     @FXML
     private Button btnBack;
+    
     @FXML
     private Label lbl1, lbl8, lbl7, lbl6, lbl5, lbl4, lbl3, lbl2, lbl10, lbl11, lbl12, lbl13, lbl14,
             lbl15, lbl16, lbl17, lbl18, lbl9, lbl19, lbl20, lbl21;
     @FXML
     private AnchorPane root;
     @FXML
-    private Label lblDOB;
+    private Label lblDOB, lblLastFourDigit;
+    
     Random r = new Random();
     int max = 9999;
     int min = 1000;
     String randomNumber4 = String.format("%04d", (Object) r.nextInt((max - min) + 1 + min));
-    String pinNum = String.format("%06d", (Object) r.nextInt((999999-100000)+1 + 100000)); 
+    String pinNum = String.format("%06d", (Object) r.nextInt((999999 - 100000) + 1 + 100000));
     String pinGenerated = null;
-    @FXML
-    private Label lblLastFourDigit;
 
-    //private String checkBox;
     /**
      * Initializes the controller class.
      */
@@ -63,55 +68,32 @@ public class ApplicationFormPage3Controller implements Initializable {
         // TODO
         onload();
     }
-
+    
     private void onload() {
         lblLastFourDigit.setText(randomNumber4);
-                   
-//            try {
-//                MessageDigest md = MessageDigest.getInstance("MD5");
-//                md.update(pinNum.getBytes());
-//                byte[] bytes = md.digest();
-//                StringBuilder sb = new StringBuilder();
-//                for (int i = 0; i < bytes.length; i++) {
-//                    sb.append(Integer.toString(bytes[i] & 0xff + 0x100, 16).substring(1));
-//                }
-//                pinGenerated = sb.toString();
-//            } catch (NoSuchAlgorithmException e) {
-//                e.printStackTrace();
-//            }
-//            System.out.println(pinGenerated);
-            //lbl21.setText(pinGenerated);
     }
-
+    
     @FXML
     private void saveButtonAction(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
         try {
             String randomNumber1 = String.format("%04d", (Object) r.nextInt((max - min) + 1 + min));
             String randomNumber2 = String.format("%04d", (Object) r.nextInt((max - min) + 1 + min));
             String randomNumber3 = String.format("%04d", (Object) r.nextInt((max - min) + 1 + min));
-
             String cardnumber = randomNumber1 + randomNumber2 + randomNumber3 + randomNumber4;
-            
-            //lbl20.setText(cardnumber);
-            //lbl21.setText(pinNum);
-
             String branchNumber = "002";
             String transitNumber = "84248";
             String creatingAccountNumber = String.format("%06d", (Object) r.nextInt(100001));
             String accountNumber = transitNumber + branchNumber
                     + creatingAccountNumber;
-
+            
             String fname = lbl1.getText();
             String mname = lbl2.getText();
             String lname = lbl3.getText();
             String faname = lbl4.getText();
-            String maritalStatus = lbl5.getText();
-
-            //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");            
+            String maritalStatus = lbl5.getText();            
             String date = lblDOB.getText();
-            //convert String to LocalDate
             LocalDate localDate = LocalDate.parse(date);
-
+            
             String gender = lbl6.getText();
             String emailAddress = lbl7.getText();
             String address = lbl8.getText();
@@ -126,9 +108,7 @@ public class ApplicationFormPage3Controller implements Initializable {
             String status = lbl17.getText();
             String existingaccount = lbl18.getText();
             String accounttype = lbl19.getText();
-            //String randomNumber = lbl20.getText();
-            //String pinNumber = lbl21.getText();
-
+            
             String message = "";
             if (checkBoxAtmCard.isSelected()) {
                 message += checkBoxAtmCard.getText() + ",";
@@ -148,12 +128,12 @@ public class ApplicationFormPage3Controller implements Initializable {
             if (checkBoxEStatement.isSelected()) {
                 message += checkBoxEStatement.getText();
             }
-
+            
             UserAccountDAO.insertUser(fname, mname, lname, faname, localDate, gender,
                     emailAddress, maritalStatus, address,
                     city, pin, state, rel, income, edu, occu, sinnumber, status, existingaccount,
                     accounttype, cardnumber, pinNum, accountNumber, message);
-
+            
             UserAccount user = new UserAccount();
             user.setRandomNumber(cardnumber);
             user.setAccountNumber(accountNumber);
@@ -161,21 +141,21 @@ public class ApplicationFormPage3Controller implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/atmsimulatorsystem/assistant/ui/ApplicationFormPage3/EmailConfirmation.fxml"));
             Parent root = loader.load();
             stage.setScene(new Scene(root));
+            stage.setTitle("Email Confirmation");
             stage.show();
-            //loadWindow("/atmsimulatorsystem/assistant/ui/ApplicationFormPage2/ApplicationFormPage2.fxml", "Personal Details 2");
             EmailConfirmationController controller = loader.<EmailConfirmationController>getController();
             controller.setText(user);
         } catch (NumberFormatException | IOException e) {
             System.out.println(e.getMessage());
         }
     }
-
+    
     @FXML
     private void backButtonAction(ActionEvent event) {
         Stage stage = (Stage) btnBack.getScene().getWindow();
         stage.close();
     }
-
+    
     void loadWindow(String location, String title) {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource(location));
@@ -187,7 +167,7 @@ public class ApplicationFormPage3Controller implements Initializable {
             Logger.getLogger(ApplicationFormPage3Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     @FXML
     private void atmCardCheckBox(ActionEvent event) {
         if (checkBoxAtmCard.isSelected()) {
@@ -196,7 +176,7 @@ public class ApplicationFormPage3Controller implements Initializable {
             });
         }
     }
-
+    
     @FXML
     private void internetBankingCheckBox(ActionEvent event) {
         if (checkBoxInternetBanking.isSelected()) {
@@ -205,7 +185,7 @@ public class ApplicationFormPage3Controller implements Initializable {
             });
         }
     }
-
+    
     @FXML
     private void mobileBankingCheckBox(ActionEvent event) {
         if (checkBoxMobileBanking.isSelected()) {
@@ -214,7 +194,7 @@ public class ApplicationFormPage3Controller implements Initializable {
             });
         }
     }
-
+    
     @FXML
     private void emaikAlertsCheckBox(ActionEvent event) {
         if (checkBoxEmailAlerts.isSelected()) {
@@ -223,7 +203,7 @@ public class ApplicationFormPage3Controller implements Initializable {
             });
         }
     }
-
+    
     @FXML
     private void checkBookCheckBox(ActionEvent event) {
         if (checkBoxAChequeBook.isSelected()) {
@@ -232,7 +212,7 @@ public class ApplicationFormPage3Controller implements Initializable {
             });
         }
     }
-
+    
     @FXML
     private void eStatementCheckBox(ActionEvent event) {
         if (checkBoxEStatement.isSelected()) {
@@ -241,7 +221,7 @@ public class ApplicationFormPage3Controller implements Initializable {
             });
         }
     }
-
+    
     public void setText(UserAccount user) {
         int user_id = user.getUser_id();
         String fname = user.getFirst_name();

@@ -14,8 +14,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author USER
+ * 
+ * @author ABHIJEET KARMAKER <C0720286>, NARESH GUNIMANIKULA <C0719672>, PRIYANKA MODI <C0717925>
  */
 public class UserAccountDAOTest {
 
@@ -33,6 +33,8 @@ public class UserAccountDAOTest {
 //        
 //        assertEquals(expResult, result);
 //    }
+    
+    
     /**
      * Test of insertUser method, of class UserAccountDAO.
      */

@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,9 +26,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
- *
- * @author USER
+ * 
+ * @author ABHIJEET KARMAKER <C0720286>, NARESH GUNIMANIKULA <C0719672>, PRIYANKA MODI <C0717925>
  */
 public class BalanceEnquiryController implements Initializable {
 
@@ -51,7 +49,6 @@ public class BalanceEnquiryController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //onLoad();
     }
 
     public void setText(UserTransactions userTran) {
@@ -74,6 +71,7 @@ public class BalanceEnquiryController implements Initializable {
             Parent root = loader.load();
             stage.setScene(new Scene(root));
             stage.show();
+            stage.setTitle("Transactions");
             String accountNumber = lblAccountNumber.getText();
             user.setAccountNumber(accountNumber);
             UserAccount user = UserAccountDAO.searchUserWithAccountNumber(lblAccountNumber.getText());

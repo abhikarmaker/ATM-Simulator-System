@@ -26,6 +26,10 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * 
+ * @author ABHIJEET KARMAKER <C0720286>, NARESH GUNIMANIKULA <C0719672>, PRIYANKA MODI <C0717925>
+ */
 public class ApplicationFormPage2Controller implements Initializable {
 
     DatabaseHandler databasehandler;
@@ -86,11 +90,8 @@ public class ApplicationFormPage2Controller implements Initializable {
             String fname = lbl1.getText();
             String mname = lbl2.getText();
             String lname = lbl3.getText();
-            String faname = lbl4.getText();
-            
-            //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");            
+            String faname = lbl4.getText();            
             String date = lblDOB.getText();	
-            //convert String to LocalDate
             LocalDate localDate = LocalDate.parse(date);
             
             String maritalStatus = lbl5.getText();

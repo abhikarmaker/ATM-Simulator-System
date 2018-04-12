@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package atmsimulatorsystem.assistant.ui.model;
 
 import java.util.Date;
 
 /**
- *
- * @author USER
+ * 
+ * @author ABHIJEET KARMAKER <C0720286>, NARESH GUNIMANIKULA <C0719672>, PRIYANKA MODI <C0717925>
  */
 public class UserTransactions {
 
@@ -21,8 +16,6 @@ public class UserTransactions {
     private String first_name;
     private Date date;
     private String email;
-
-
 
     public String getEmail() {
         return email;
@@ -50,8 +43,6 @@ public class UserTransactions {
         this.email = email;
     }
     
-    
-
     public Date getDate() {
         return date;
     }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package atmsimulatorsystem.assistant.ui.Transaction;
 
 import atmsimulatorsystem.assistant.ui.model.UserAccount;
@@ -40,9 +35,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
- * FXML Controller class
  *
- * @author USER
+ * @author ABHIJEET KARMAKER <C0720286>, NARESH GUNIMANIKULA <C0719672>,
+ * PRIYANKA MODI <C0717925>
  */
 public class WithdrawlController implements Initializable {
 
@@ -111,14 +106,6 @@ public class WithdrawlController implements Initializable {
                 } else {
                     balance -= withdraw;
                     UserTransactionsDAO.insertWithdrawlAmount(lblAccountNumber.getText(), balance, withdraw, dateFormat.format(date));
-//                    ButtonType foo = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
-//                    ButtonType bar = new ButtonType("CANCEL", ButtonBar.ButtonData.CANCEL_CLOSE);
-//                    Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION, "Do you confirm to withdraw?", foo, bar);
-//                    alert1.setHeaderText(null);
-//                    alert1.showAndWait();
-//                    if(bar == ButtonType.CANCEL){
-//                        alert1.close();
-//                    }else{
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setHeaderText(null);
                     alert.setContentText("You have successfully Withdrawed " + withdraw + " from your Account.");
@@ -142,7 +129,6 @@ public class WithdrawlController implements Initializable {
                     } catch (IOException e) {
                         System.out.println(e);
                     }
-                    // }
                 }
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -161,6 +147,7 @@ public class WithdrawlController implements Initializable {
             Parent root = loader.load();
             stage.setScene(new Scene(root));
             stage.show();
+            stage.setTitle("Transactions");
             String accountNumber = lblAccountNumber.getText();
             user.setAccountNumber(accountNumber);
             UserAccount user = UserAccountDAO.searchUserWithAccountNumber(lblAccountNumber.getText());

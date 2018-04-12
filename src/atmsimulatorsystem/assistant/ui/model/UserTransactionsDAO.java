@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package atmsimulatorsystem.assistant.ui.model;
 
 import atmsimulatorsystem.assistant.Database.DatabaseHandler;
@@ -12,11 +7,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- *
- * @author USER
+ * 
+ * @author ABHIJEET KARMAKER <C0720286>, NARESH GUNIMANIKULA <C0719672>, PRIYANKA MODI <C0717925>
  */
 public class UserTransactionsDAO {
 
+    /**
+     * 
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
     public static ObservableList<UserTransactions> searchUser() throws SQLException, ClassNotFoundException {
         String selectStmt = "SELECT * FROM TRANSACTIONS";
 
@@ -30,8 +31,15 @@ public class UserTransactionsDAO {
         }
     }
 
+    /**
+     * 
+     * @param rs
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
     private static ObservableList<UserTransactions> getUserList(ResultSet rs) throws SQLException, ClassNotFoundException {
-        //Declare a observable List which comprises of User objects
+        //Declare a observable List which comprises of UserTransactions objects
         ObservableList<UserTransactions> userList = FXCollections.observableArrayList();
 
         while (rs.next()) {
@@ -42,13 +50,20 @@ public class UserTransactionsDAO {
             user.setDeposit(rs.getDouble("deposit"));
             user.setWithdrawl(rs.getDouble("withdrwal"));
             user.setDate(rs.getDate("date"));
-            //Add employee to the ObservableList
+            //Add users to the ObservableList
             userList.add(user);
         }
-        //return empList (ObservableList of Employees)
+        //return userList (ObservableList of Users)
         return userList;
     }
 
+    /**
+     * 
+     * @param accountNumber
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
     public static UserTransactions searchUserForTransactionDetails(String accountNumber) throws SQLException, ClassNotFoundException {
         //Declare a SELECT statement
         String selectStmt
@@ -62,10 +77,10 @@ public class UserTransactionsDAO {
             //Get ResultSet from dbExecuteQuery method
             ResultSet rsUser = DatabaseHandler.dbExecuteQuery(selectStmt);
 
-            //Send ResultSet to the getEmployeeFromResultSet method and get employee object
+            //Send ResultSet to the getEmployeeFromResultSet method and get user object
             UserTransactions user = getUserFromResultSet(rsUser);
 
-            //Return employee object
+            //Return user object
             return user;
         } catch (SQLException e) {
             System.out.println("While searching an user with " + accountNumber + " account number, an error occurred: " + e);
@@ -74,6 +89,12 @@ public class UserTransactionsDAO {
         }
     }
 
+    /**
+     * 
+     * @param rs
+     * @return
+     * @throws SQLException 
+     */
     public static UserTransactions getUserFromResultSet(ResultSet rs) throws SQLException {
         UserTransactions user = new UserTransactions();
         rs.afterLast();
@@ -85,6 +106,15 @@ public class UserTransactionsDAO {
         return user;
     }
     
+    /**
+     * 
+     * @param accountNumber
+     * @param balance
+     * @param deposit
+     * @param date
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public static void insertDepositAmount(String accountNumber, double balance, double deposit, String date) throws ClassNotFoundException, SQLException{
         String updateStmt = "INSERT INTO TRANSACTIONS(account_number, balance, deposit, date) VALUES ("
                 + "'" + accountNumber + "',"
@@ -101,6 +131,15 @@ public class UserTransactionsDAO {
                 
     }
     
+    /**
+     * 
+     * @param accountNumber
+     * @param balance
+     * @param withdraw
+     * @param date
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public static void insertWithdrawlAmount(String accountNumber, double balance, double withdraw, String date) throws ClassNotFoundException, SQLException{
         String updateStmt = "INSERT INTO TRANSACTIONS(account_number, balance, withdrawl, date) VALUES ("
                 + "'" + accountNumber + "',"
@@ -116,6 +155,13 @@ public class UserTransactionsDAO {
         }        
     }
     
+    /**
+     * 
+     * @param accountNumber
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
     public static UserTransactions searchUserForMiniStatementData(String accountNumber) throws SQLException, ClassNotFoundException {
         //Declare a SELECT statement
         String selectStmt
@@ -130,10 +176,10 @@ public class UserTransactionsDAO {
             //Get ResultSet from dbExecuteQuery method
             ResultSet rsUser = DatabaseHandler.dbExecuteQuery(selectStmt);
 
-            //Send ResultSet to the getEmployeeFromResultSet method and get employee object
+            //Send ResultSet to the getEmployeeFromResultSet method and get user Transaction object
             UserTransactions user = getUserDataFromResultSet(rsUser);
 
-            //Return employee object
+            //Return user Transaction object
             return user;
         } catch (SQLException e) {
             System.out.println("While searching an user with " + accountNumber 
@@ -143,6 +189,12 @@ public class UserTransactionsDAO {
         }
     }
 
+    /**
+     * 
+     * @param rs
+     * @return
+     * @throws SQLException 
+     */
     public static UserTransactions getUserDataFromResultSet(ResultSet rs) throws SQLException {
         UserTransactions user = new UserTransactions();
         while (rs.next()) {
@@ -156,6 +208,13 @@ public class UserTransactionsDAO {
         return user;
     }
     
+    /**
+     * 
+     * @param accountNumber
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
     public static UserTransactions searchUserForTransactionDetailsEmail(String accountNumber) throws SQLException, ClassNotFoundException {
         //Declare a SELECT statement
         String selectStmt
@@ -169,7 +228,7 @@ public class UserTransactionsDAO {
             //Get ResultSet from dbExecuteQuery method
             ResultSet rsUser = DatabaseHandler.dbExecuteQuery(selectStmt);
 
-            //Send ResultSet to the getEmployeeFromResultSet method and get employee object
+            //Send ResultSet to the getUserFromResultSet method and get user object
             UserTransactions user = getUserFromResultSetEmail(rsUser);
 
             //Return employee object
@@ -181,6 +240,12 @@ public class UserTransactionsDAO {
         }
     }
 
+    /**
+     * 
+     * @param rs
+     * @return
+     * @throws SQLException 
+     */
     public static UserTransactions getUserFromResultSetEmail(ResultSet rs) throws SQLException {
         UserTransactions user = new UserTransactions();
         rs.afterLast();

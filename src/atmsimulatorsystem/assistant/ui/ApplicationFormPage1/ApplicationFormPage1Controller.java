@@ -25,6 +25,10 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * 
+ * @author ABHIJEET KARMAKER <C0720286>, NARESH GUNIMANIKULA <C0719672>, PRIYANKA MODI <C0717925>
+ */
 public class ApplicationFormPage1Controller implements Initializable {
 
     @FXML
@@ -138,7 +142,7 @@ public class ApplicationFormPage1Controller implements Initializable {
                 Parent root = loader.load();
                 stage.setScene(new Scene(root));
                 stage.show();
-                stage.setTitle("Form Page 2");
+                stage.setTitle("Application Form 2");
                 ApplicationFormPage2Controller controller = loader.<ApplicationFormPage2Controller>getController();
                 controller.setText(user);
             }

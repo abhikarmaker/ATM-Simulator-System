@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package atmsimulatorsystem.assistant.ui.Transaction;
 
+import atmsimulatorsystem.assistant.ui.ThankYouPage.ThankYouPageController;
 import atmsimulatorsystem.assistant.ui.model.UserAccount;
 import atmsimulatorsystem.assistant.ui.model.UserAccountDAO;
 import java.io.IOException;
@@ -35,9 +31,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
- * FXML Controller class
- *
- * @author USER
+ * 
+ * @author ABHIJEET KARMAKER <C0720286>, NARESH GUNIMANIKULA <C0719672>, PRIYANKA MODI <C0717925>
  */
 public class PinChangeController implements Initializable {
     
@@ -76,6 +71,7 @@ public class PinChangeController implements Initializable {
                 alert.setContentText("Your Pin has been successfully changed. Check your mail.");
                 alert.showAndWait();
                 emailSender();
+                thankYouPageLoader();
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
@@ -83,7 +79,6 @@ public class PinChangeController implements Initializable {
                 alert.showAndWait();
             }
         } catch (SQLException | ClassNotFoundException e) {
-            //resultArea.setText("Problem occurred while updating email: " + e);
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("Problem occurred while updating email: " + e);
@@ -99,6 +94,7 @@ public class PinChangeController implements Initializable {
             Parent root = loader.load();
             stage.setScene(new Scene(root));
             stage.show();
+            stage.setTitle("Transactions");
             String accountNumber = lblAccountNumber.getText();
             user.setAccountNumber(accountNumber);
             UserAccount user = UserAccountDAO.searchUserWithAccountNumber(lblAccountNumber.getText());
@@ -172,6 +168,25 @@ public class PinChangeController implements Initializable {
             }
         } catch (ClassNotFoundException | SQLException | MessagingException e) {
             System.out.println(e.getMessage());
+        }
+    }
+     private void thankYouPageLoader() {
+        UserAccount user = new UserAccount();
+        try {
+
+            Stage stage = (Stage) root.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/atmsimulatorsystem"
+                    + "/assistant/ui/ThankYouPage/ThankYouPage.fxml"));
+            Parent root = loader.load();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Thank You");
+            stage.show();
+            String accountNumber = lblAccountNumber.getText();
+            user.setAccountNumber(accountNumber);
+            ThankYouPageController controller = loader.<ThankYouPageController>getController();
+            controller.setText(user);
+        } catch (IOException e) {
+            System.out.println(e);
         }
     }
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package atmsimulatorsystem.assistant.ui.Transaction;
 
 import atmsimulatorsystem.assistant.ui.ThankYouPage.ThankYouPageController;
@@ -40,9 +35,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
- * FXML Controller class
  *
- * @author USER
+ * @author ABHIJEET KARMAKER <C0720286>, NARESH GUNIMANIKULA <C0719672>,
+ * PRIYANKA MODI <C0717925>
  */
 public class DepositController implements Initializable {
 
@@ -75,6 +70,7 @@ public class DepositController implements Initializable {
             Parent root = loader.load();
             stage.setScene(new Scene(root));
             stage.show();
+            stage.setTitle("Transactions");
             String accountNumber = lblAccountNumber.getText();
             user.setAccountNumber(accountNumber);
             UserAccount user = UserAccountDAO.searchUserWithAccountNumber(lblAccountNumber.getText());
