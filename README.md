@@ -18,6 +18,7 @@ itextpdf-5.5.4.jar
 jfoenix.jar
 
 Process of using the Software:
+
 1>	Login Page will open once application is started.
 
 2>	If you have already created your Account, Please Login with your Card Number and Pin Number. or else Click on the Sign-Up button, Registration Page will open. There are three pages of Application Registration. Input all your details in three of the pages and submit the form. 
